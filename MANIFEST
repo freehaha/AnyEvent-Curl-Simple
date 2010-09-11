@@ -1,0 +1,6 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/AnyEvent-Curl-Simple.t
+lib/AnyEvent/Curl/Simple.pm
