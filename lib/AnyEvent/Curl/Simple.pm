@@ -105,7 +105,7 @@ sub get {
 		carp "need a hashref for argument";
 		return;
 	}
-	$args = join('&', map { uri_escape($_)."=".uri_escape($args->{$_}) } keys %$args);
+	$args = join('&', map { uri_escape_utf8($_)."=".uri_escape_utf8($args->{$_}) } keys %$args);
 	if($args) {
 		$url .= ($url =~ /\?/)?'':"?";
 		$url .= $args;
@@ -122,7 +122,7 @@ sub post {
 	my ($id, $curl) = $self->new_request($url, $cb, $data);
 
 	if(ref $args eq 'HASH') {
-		$args = join('&', map { uri_escape($_)."=".uri_escape($args->{$_}) } keys %$args);
+		$args = join('&', map { uri_escape_utf8($_)."=".uri_escape_utf8($args->{$_}) } keys %$args);
 	}
 
 	#let's use 1.0 POST, so we can post to servers who did not implement 1.1 POST right
